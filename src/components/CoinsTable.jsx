@@ -43,6 +43,11 @@ export default function CoinsTable() {
         coin.symbol.toLowerCase().includes(query)
     );
   };
+  const handleChange = (e) => {
+    e.preventDefault();
+    setQuery(e.target.value)
+    
+  }
   return (
     <ThemeProvider theme={darkTheme}>
     <Container style={{textAlign: "center"}}>
@@ -55,7 +60,7 @@ export default function CoinsTable() {
       label="Search for a crypto currency.."
       variant="outlined"
       style={{marginBottom: 20, width: "100%"}}
-      onChange={(e) => setQuery(e.target.value)}
+      onChange={handleChange}
       />
       <TableContainer component={Paper}>
         {loading ? 
