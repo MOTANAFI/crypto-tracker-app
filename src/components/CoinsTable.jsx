@@ -1,5 +1,5 @@
 
-import { Container,  createTheme,  LinearProgress,  Pagination,  Paper,  Table,  TableBody,  TableCell,  TableContainer,  TableHead,  TableRow,  TextField, ThemeProvider, Typography} from '@mui/material'
+import { Container,  createTheme,  InputBase,  LinearProgress,  Pagination,  Paper,  Table,  TableBody,  TableCell,  TableContainer,  TableHead,  TableRow, ThemeProvider, Typography} from '@mui/material'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -44,10 +44,10 @@ export default function CoinsTable() {
     );
   };
   const handleChange = (e) => {
-    e.preventDefault();
-    setQuery(e.target.value)
-    
-  }
+    e.stopPropagation();
+    setQuery(e.target.value);
+  };
+  
   return (
     <ThemeProvider theme={darkTheme}>
     <Container style={{textAlign: "center"}}>
@@ -56,12 +56,12 @@ export default function CoinsTable() {
       >
         Coin Price by Market Cap
       </Typography>
-      <TextField
-      label="Search for a crypto currency.."
-      variant="outlined"
-      style={{marginBottom: 20, width: "100%"}}
-      onChange={handleChange}
-      />
+      <InputBase
+          placeholder="Search for a cryptocurrency..."
+          inputProps={{ 'aria-label': 'search' }}
+          style={{ marginBottom: 20, width: "100%" }}
+          onChange={handleChange}
+        />
       <TableContainer component={Paper}>
         {loading ? 
         (<LinearProgress style={{backgroundColor:"gold"}}/>):
