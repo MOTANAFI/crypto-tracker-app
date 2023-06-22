@@ -60,6 +60,7 @@ export default function CoinsTable() {
           placeholder="Search for a cryptocurrency..."
           inputProps={{ 'aria-label': 'search' }}
           style={{ marginBottom: 20, width: "100%" }}
+          value={query}
           onChange={handleChange}
         />
       <TableContainer component={Paper}>
